@@ -1,25 +1,19 @@
-package kd.springframework.gymapp.domain;
+package kd.springframework.gymapp.commands;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
-@Document(collection = "Achievement")
-public class Achievement {
+public class AchievementCommand {
     @Id
     private String id;
     private String name;
     private String description;
     private LocalDate dateOfAward;
-    //maybe add category for this o.e. running, bodybuilding, powerlifting etc.???
-
 }

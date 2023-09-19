@@ -1,4 +1,6 @@
 package kd.springframework.gymapp.services;
 
-public interface EquipmentService {
+import kd.springframework.gymapp.domain.Equipment;
+
+public interface EquipmentService extends CrudService<Equipment, String>{
 }

@@ -1,19 +1,14 @@
-package kd.springframework.gymapp.domain;
+package kd.springframework.gymapp.commands;
 
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
-@Document(collection = "Equipment")
-public class Equipment {
+public class EquipmentCommand {
     @Id
     private String id; //change type to Long in mongodb or String or converter use if will work
     private String name;

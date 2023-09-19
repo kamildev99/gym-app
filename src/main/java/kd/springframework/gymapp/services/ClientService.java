@@ -1,4 +1,8 @@
 package kd.springframework.gymapp.services;
 
-public interface ClientService {
+
+import kd.springframework.gymapp.domain.Client;
+
+public interface ClientService extends CrudService<Client, String>{
+
 }

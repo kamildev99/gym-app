@@ -1,4 +1,6 @@
 package kd.springframework.gymapp.services;
 
-public class TrainerService {
+import kd.springframework.gymapp.domain.Trainer;
+
+public interface TrainerService extends CrudService<Trainer, String>{
 }

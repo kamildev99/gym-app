@@ -1,5 +1,8 @@
 package kd.springframework.gymapp.services;
 
 
-public interface AchievementService {
+import kd.springframework.gymapp.domain.Achievement;
+import org.springframework.data.repository.CrudRepository;
+
+public interface AchievementService extends CrudService<Achievement, String> {
 }
