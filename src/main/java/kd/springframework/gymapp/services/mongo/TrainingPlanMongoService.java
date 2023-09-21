@@ -2,10 +2,12 @@ package kd.springframework.gymapp.services.mongo;
 
 import kd.springframework.gymapp.domain.TrainingPlan;
 import kd.springframework.gymapp.services.TrainingPlanService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 
+@Service
 public class TrainingPlanMongoService implements TrainingPlanService {
     @Override
     public List<TrainingPlan> findAll() {

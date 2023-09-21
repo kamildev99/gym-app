@@ -4,11 +4,13 @@ import kd.springframework.gymapp.domain.Trainer;
 import kd.springframework.gymapp.repositories.TrainerRepository;
 import kd.springframework.gymapp.services.TrainerService;
 import kd.springframework.gymapp.services.TrainingPlanService;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+@Service
 public class TrainerMongoService implements TrainerService {
 
     private final TrainerRepository trainerRepository;

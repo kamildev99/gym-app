@@ -4,10 +4,12 @@ package kd.springframework.gymapp.services.mongo;
 import kd.springframework.gymapp.domain.Client;
 import kd.springframework.gymapp.repositories.ClientRepository;
 import kd.springframework.gymapp.services.ClientService;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ClientMongoService implements ClientService {
 
     private final ClientRepository clientRepository;
