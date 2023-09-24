@@ -5,7 +5,12 @@ import kd.springframework.gymapp.domain.Client;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+@Component
 public class ClientCommandToClient implements Converter<ClientCommand, Client> {
     @Nullable
     @Synchronized
@@ -15,11 +20,12 @@ public class ClientCommandToClient implements Converter<ClientCommand, Client> {
             return null;
         }
 
+
         Client client = new Client();
         client.setId(source.getId());
         client.setFirstName(source.getFirstName());
         client.setLastName(source.getLastName());
-        client.setBirthDate(source.getBirthDate());
+        client.setBirthDate(LocalDate.parse(source.getBirthDate(),DateTimeFormatter.ofPattern("dd-MM-yyyy")));
 
         return client;
     }

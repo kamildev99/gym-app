@@ -17,12 +17,11 @@ import java.util.List;
 @CrossOrigin
 public class EquipmentController {
 
-    private final EquipmentRepository equipmentService;
+    private final EquipmentService equipmentService;
 
-    public EquipmentController(EquipmentRepository equipmentService) {
+    public EquipmentController(EquipmentService equipmentService) {
         this.equipmentService = equipmentService;
     }
-
 
     @GetMapping("/equipments")
     public List<Equipment> getEquipment(){
@@ -31,4 +30,19 @@ public class EquipmentController {
         return equipment;
 
     }
+
+    // private final EquipmentRepository equipmentService;
+
+   /* public EquipmentController(EquipmentRepository equipmentService) {
+        this.equipmentService = equipmentService;
+    }*/
+
+    /*
+    @GetMapping("/equipments")
+    public List<Equipment> getEquipment(){
+        List<Equipment> equipment = new ArrayList<>();
+        equipment = equipmentService.findAll();
+        return equipment;
+
+    }*/
 }

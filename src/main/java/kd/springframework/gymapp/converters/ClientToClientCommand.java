@@ -5,7 +5,9 @@ import kd.springframework.gymapp.domain.Client;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ClientToClientCommand implements Converter<Client, ClientCommand> {
 
     @Nullable
@@ -20,7 +22,7 @@ public class ClientToClientCommand implements Converter<Client, ClientCommand> {
         clientCommand.setId(source.getId());
         clientCommand.setFirstName(source.getFirstName());
         clientCommand.setLastName(source.getLastName());
-        clientCommand.setBirthDate(source.getBirthDate());
+        clientCommand.setBirthDate(source.getBirthDate().toString());
 
         return clientCommand;
     }

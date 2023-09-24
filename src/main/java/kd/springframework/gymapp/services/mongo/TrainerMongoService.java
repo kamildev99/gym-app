@@ -1,28 +1,38 @@
 package kd.springframework.gymapp.services.mongo;
 
+import kd.springframework.gymapp.converters.TrainerCommandToTrainer;
 import kd.springframework.gymapp.domain.Trainer;
+import kd.springframework.gymapp.repositories.TrainerCommandRepository;
 import kd.springframework.gymapp.repositories.TrainerRepository;
 import kd.springframework.gymapp.services.TrainerService;
-import kd.springframework.gymapp.services.TrainingPlanService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class TrainerMongoService implements TrainerService {
 
     private final TrainerRepository trainerRepository;
+    private final TrainerCommandRepository trainerCommandRepository;
 
-    public TrainerMongoService(TrainerRepository trainerRepository) {
+    private final TrainerCommandToTrainer trainerCommandToTrainer;
+
+    public TrainerMongoService(TrainerRepository trainerRepository, TrainerCommandRepository trainerCommandRepository, TrainerCommandToTrainer trainerCommandToTrainer) {
         this.trainerRepository = trainerRepository;
+        this.trainerCommandRepository = trainerCommandRepository;
+        this.trainerCommandToTrainer = trainerCommandToTrainer;
     }
 
     @Override
     public List<Trainer> findAll() {
        List<Trainer> trainers = new ArrayList<>();
-       trainers = trainerRepository.findAll();
+       trainers = trainerCommandRepository.findAll().stream()
+               .map(trainerCommandToTrainer::convert)
+               .collect(Collectors.toList());
+
+       //trainers = trainerRepository.findAll();
         return trainers;
     }
 
