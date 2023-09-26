@@ -1,5 +1,7 @@
 package kd.springframework.gymapp.services.mongo;
 
+import kd.springframework.gymapp.commands.ClientCommand;
+import kd.springframework.gymapp.commands.TrainerCommand;
 import kd.springframework.gymapp.converters.TrainerCommandToTrainer;
 import kd.springframework.gymapp.domain.Trainer;
 import kd.springframework.gymapp.repositories.TrainerCommandRepository;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,8 +41,13 @@ public class TrainerMongoService implements TrainerService {
 
     @Override
     public Trainer findById(String aLong) {
-        return trainerRepository.findById(aLong).orElse(null);
+        Optional<TrainerCommand> trainerCommandOptional = trainerCommandRepository.findById(aLong);
+        return trainerCommandOptional.map(trainerCommandToTrainer::convert).orElse(null);
+        //return trainerCommandRepository.findById(aLong).orElse(null);
     }
+   /* public Trainer findById(String aLong) {
+        return trainerRepository.findById(aLong).orElse(null);
+    }*/
 
     @Override
     public Trainer save(Trainer object) {

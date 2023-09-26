@@ -9,6 +9,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Setter
@@ -23,7 +26,7 @@ public class Client extends Person {
     private String lastName;
     //age will be calculated
     private LocalDate birthDate;
-    private Set<Trainer> trainers;
+    private List<Trainer> trainers = new ArrayList<>();
 
 
 }

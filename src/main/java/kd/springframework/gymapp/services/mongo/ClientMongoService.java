@@ -64,7 +64,9 @@ public class ClientMongoService implements ClientService {
 
     @Override
     public Client findById(String s) {
-        return clientRepository.findById(s).orElse(null);
+        Optional<ClientCommand> clientCommandOptional = clientCommandRepository.findById(s);
+        return clientCommandOptional.map(clientCommandToClient::convert).orElse(null);
+        //return clientRepository.findById(s).orElse(null);
     }
 
     @Override
