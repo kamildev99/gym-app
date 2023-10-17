@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Setter
@@ -21,6 +22,6 @@ public class Trainer extends Person {
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
-    Set<Client> clients;
+    List<Client> clients;
 
 }
