@@ -1,9 +1,10 @@
 package kd.springframework.gymapp.converters;
 
-import kd.springframework.gymapp.ConversionService;
+
 import kd.springframework.gymapp.commands.TrainerCommand;
 import kd.springframework.gymapp.domain.Client;
 import kd.springframework.gymapp.domain.Trainer;
+import kd.springframework.gymapp.services.ClientService;
 import lombok.Synchronized;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.converter.Converter;
@@ -17,10 +18,10 @@ import java.time.format.DateTimeFormatter;
 public class TrainerCommandToTrainer implements Converter<TrainerCommand, Trainer> {
 
 
-    //private final ClientCommandToClient clientCommandToClient;
+    //private final ClientService clientService;
 
-   /* public TrainerCommandToTrainer(ClientCommandToClient clientCommandToClient) {
-        this.clientCommandToClient = clientCommandToClient;
+   /* public TrainerCommandToTrainer(ClientService clientService) {
+        this.clientService = clientService;
     }*/
 
     @Nullable
@@ -37,8 +38,8 @@ public class TrainerCommandToTrainer implements Converter<TrainerCommand, Traine
         trainer.setLastName(source.getLastName());
         trainer.setBirthDate(LocalDate.parse(source.getBirthDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
 
-      /*  if(source.getClients() != null && source.getClients().size() > 0){
-            source.getClients().forEach(client -> trainer.getClients().add(clientCommandToClient.convertToClient(client)));
+       /*if(source.getClients() != null && source.getClients().size() > 0){
+            source.getClients().forEach(client -> trainer.getClients().add(clientService.findById(client)));
         }*/
 
         return trainer;

@@ -23,11 +23,6 @@ public class ClientController {
     @GetMapping("/clients")
     public List<Client> getClients(){
 
-       /* List<ClientCommand> clients = new ArrayList<>();
-
-        List<Client> clients = new ArrayList<>();
-        clients = clientService.findAll();*/
-
         List<Client> clients = new ArrayList<>();
         clients = clientService.findAll();
         return clients;

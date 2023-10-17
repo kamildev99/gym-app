@@ -21,7 +21,6 @@ public class ClientCommand {
     private String id;
     private String firstName;
     private String lastName;
-    //age will be calculated
     private String birthDate;
-    private List<String> trainers = new ArrayList<>();
+    private String trainer;
 }
