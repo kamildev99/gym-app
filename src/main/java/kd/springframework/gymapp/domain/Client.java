@@ -24,9 +24,8 @@ public class Client extends Person {
     private String id;
     private String firstName;
     private String lastName;
-    //age will be calculated
     private LocalDate birthDate;
-    private List<Trainer> trainers = new ArrayList<>();
+    private Trainer trainer = new Trainer();
 
 
 }

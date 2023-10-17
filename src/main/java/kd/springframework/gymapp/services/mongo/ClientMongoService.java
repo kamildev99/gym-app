@@ -22,13 +22,12 @@ import java.util.stream.Collectors;
 public class ClientMongoService implements ClientService {
 
     private final ClientRepository clientRepository;
-    private final TrainerCommandRepository trainerCommandRepository;
     private final ClientCommandToClient clientCommandToClient;
     private final ClientCommandRepository clientCommandRepository;
 
-    public ClientMongoService(ClientRepository clientRepository, TrainerCommandRepository trainerCommandRepository, ClientCommandToClient clientCommandToClient, ClientCommandRepository clientCommandRepository) {
+    public ClientMongoService(ClientRepository clientRepository, ClientCommandToClient clientCommandToClient, ClientCommandRepository clientCommandRepository) {
         this.clientRepository = clientRepository;
-        this.trainerCommandRepository = trainerCommandRepository;
+       // this.trainerCommandRepository = trainerCommandRepository;
         this.clientCommandToClient = clientCommandToClient;
         this.clientCommandRepository = clientCommandRepository;
     }
@@ -51,22 +50,12 @@ public class ClientMongoService implements ClientService {
     public ClientCommand findTrainerAndClientId(String trainerId, String clientId) {
         return null;
     }
-/*  @Override
-    public ClientCommand findTrainerAndClientId(String trainerId, String clientId) {
-        Optional<TrainerCommand> trainerOptional = trainerCommandRepository.findBy(trainerId);
 
-        if(!trainerOptional.isPresent()){
-            throw new RuntimeException("Trainer not found by trainer id in clients");
-        }
-
-
-    }*/
 
     @Override
     public Client findById(String s) {
         Optional<ClientCommand> clientCommandOptional = clientCommandRepository.findById(s);
         return clientCommandOptional.map(clientCommandToClient::convert).orElse(null);
-        //return clientRepository.findById(s).orElse(null);
     }
 
     @Override
